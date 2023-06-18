@@ -3,7 +3,10 @@ local diagnosticls = require("diagnosticls-configs")
 
 local function register_fmt_keymap(name, bufnr)
   vim.keymap.set("n", "<leader>f", function()
-    vim.lsp.buf.format({ bufnr = bufnr, name = name, timeout_ms = 10000, async = false })
+    vim.lsp.buf.format(vim.tbl_extend("force", { timeout_ms = 10000, async = false }, {
+      name = name,
+      bufnr = bufnr,
+    }))
   end, { buffer = bufnr, desc = "[lsp] format" })
 
   -- uncomment to enable format on save
@@ -25,7 +28,11 @@ local function register_fmt_keymap(name, bufnr)
 
   vim.keymap.set("x", "<leader>f", function()
     vim.lsp.buf.format({ bufnr = bufnr, name = name, timeout_ms = 10000, async = false })
-  end, { buffer = bufnr, desc = "[lsp] format" })
+  end, {
+    buffer = bufnr
+    ,
+    desc = "[lsp] format"
+  })
 end
 
 
@@ -117,10 +124,26 @@ diagnosticls.init({
   end,
 })
 
+local eslint = require 'diagnosticls-configs.linters.eslint'
+--eslint = vim.tbl_extend('force', eslint, {
+--  sourceName = 'eslint_extended',
+--  command = './node_modules/.bin/eslint',
+--  args = {
+--    '--stdin',
+--    '--stdin-filename',
+--    '%filepath',
+--    '--format',
+--    'json'
+--  },
+--  requiredFiles = { '.eslintrc.js' },
+--  rootPatterns = { '.git' },
+--})
+
 local web_configs = {
-  linter = require("diagnosticls-configs.linters.eslint_d"),
+  linter = eslint,
   formatter = require("diagnosticls-configs.formatters.prettier"),
 }
+
 
 diagnosticls.setup({
   javascript = web_configs,
