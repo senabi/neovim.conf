@@ -22,21 +22,22 @@ vim.keymap.set("n", "<leader>svwm", function()
 end)
 
 -- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set("n", "<leader>P", [["+P]])
+vim.keymap.set("x", "<leader>p", [["_dP]]) -- paste without overwriting register
+vim.keymap.set("n", "<leader>P", [["+P]]) -- paste from system clipboard
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]]) -- yank to system clipboard
+vim.keymap.set("n", "<leader>Y", [["+Y]]) -- yank line to system clipboard
+vim.keymap.set("n", "YY", "va{Vy") -- yank function including the name
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]]) -- delete to blackhole register
 
 -- commentary
 vim.keymap.set("n", "<C-_>", ":Commentary<CR>")
 vim.keymap.set("v", "<C-_>", ":Commentary<CR>")
 
 -- This is going to get me cancelled
-vim.keymap.set("i", "<C-c>", "<Esc>")
+-- vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")

@@ -42,6 +42,7 @@ return require('packer').startup(function(use)
   use("tpope/vim-fugitive")
   use("lewis6991/gitsigns.nvim")
   use("nvim-treesitter/nvim-treesitter-context");
+  use("windwp/nvim-ts-autotag")
 
   use {
     'VonHeikemen/lsp-zero.nvim',

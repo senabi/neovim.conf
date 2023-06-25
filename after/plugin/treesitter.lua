@@ -23,6 +23,10 @@ require'nvim-treesitter.configs'.setup {
   -- Required by Commentary - nvim-ts-context-commentstring
   context_commentstring = {
     enable = true
+  },
+
+  autotag = {
+    enable = true
   }
 }
 
