@@ -1,5 +1,5 @@
 vim.opt.guicursor = ""
-vim.g.copilot_node_command = "/home/toa/.local/share/fnm/node-versions/v18.16.1/installation/bin/node"
+vim.g.copilot_node_command = "/home/taru/.volta/bin/node"
 --vim.b.match_word = [[<!--:-->,<:>,<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,<\@<=\([^/!][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\([^/!][^ \t>]*\)>,(:),{:},\[:\],<:>,\/\*:\*\/,#\s*if\%(n\=def\)\=:#\s*else\>:#\s*elif\>:#\s*endif\>]]
 
 vim.opt.nu = true
@@ -62,7 +62,7 @@ vim.opt.timeoutlen = 500
 --   cache_enabled = 0,
 -- }
 
-local win32yank = vim.fn.expand('$NEOVIM_WIN_DIR/bin/win32yank.exe')
+local win32yank = vim.fn.expand('/usr/local/bin/win32yank.exe')
 vim.g.clipboard = {
   name = 'wsl',
   copy = {
