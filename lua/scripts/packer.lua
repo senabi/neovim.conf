@@ -67,10 +67,10 @@ return require('packer').startup(function(use)
       { 'rafamadriz/friendly-snippets' },
 
       -- prettier
-      -- {'jose-elias-alvarez/null-ls.nvim'},
-      -- {'MunifTanjim/prettier.nvim'},
+      {'jose-elias-alvarez/null-ls.nvim'},
+      {'MunifTanjim/prettier.nvim'},
 
-      -- Linter/Formatter
+      -- Linter, Formatter for JS only works for react
       { 'creativenull/diagnosticls-configs-nvim' },
 
     }

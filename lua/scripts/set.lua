@@ -1,4 +1,6 @@
 vim.opt.guicursor = ""
+vim.g.copilot_node_command = "/home/toa/.local/share/fnm/node-versions/v18.16.1/installation/bin/node"
+--vim.b.match_word = [[<!--:-->,<:>,<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,<\@<=\([^/!][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\([^/!][^ \t>]*\)>,(:),{:},\[:\],<:>,\/\*:\*\/,#\s*if\%(n\=def\)\=:#\s*else\>:#\s*elif\>:#\s*endif\>]]
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -29,6 +31,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+vim.opt.timeoutlen = 500
 
 -- vim.g.clipboard = {
 --   name = 'WslClipboard',

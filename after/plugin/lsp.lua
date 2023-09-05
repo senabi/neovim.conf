@@ -2,12 +2,13 @@ local lsp = require("lsp-zero")
 local diagnosticls = require("diagnosticls-configs")
 
 local function register_fmt_keymap(name, bufnr)
-  vim.keymap.set("n", "<leader>f", function()
-    vim.lsp.buf.format(vim.tbl_extend("force", { timeout_ms = 10000, async = false }, {
-      name = name,
-      bufnr = bufnr,
-    }))
-  end, { buffer = bufnr, desc = "[lsp] format" })
+  -- vim.keymap.set("n", "<leader>f", function()
+  --   print("formatting", name)
+  --   vim.lsp.buf.format(vim.tbl_extend("force", { timeout_ms = 10000, async = false }, {
+  --     name = name,
+  --     bufnr = bufnr,
+  --   }))
+  -- end, { buffer = bufnr, desc = "[lsp] format" })
 
   -- uncomment to enable format on save
   --[[
@@ -26,13 +27,13 @@ local function register_fmt_keymap(name, bufnr)
       ]]
   -- end
 
-  vim.keymap.set("x", "<leader>f", function()
-    vim.lsp.buf.format({ bufnr = bufnr, name = name, timeout_ms = 10000, async = false })
-  end, {
-    buffer = bufnr
-    ,
-    desc = "[lsp] format"
-  })
+  -- vim.keymap.set("x", "<leader>f", function()
+  --   vim.lsp.buf.format({ bufnr = bufnr, name = name, timeout_ms = 10000, async = false })
+  -- end, {
+  --   buffer = bufnr
+  --   ,
+  --   desc = "[lsp] format"
+  -- })
 end
 
 
@@ -45,7 +46,8 @@ lsp.ensure_installed({
   'cssls',
   'tailwindcss',
   'jsonls',
-  'diagnosticls'
+  'diagnosticls',
+  'ols'
 })
 
 require('mason-tool-installer').setup({
@@ -117,31 +119,18 @@ vim.diagnostic.config({
   virtual_text = true
 })
 
-diagnosticls.init({
-  on_attach = function(_, bufnr)
-    register_fmt_keymap("diagnosticls", bufnr)
-    -- register_fmt_autosave("diagnosticls", bufnr)
-  end,
-})
+-- diagnosticls.init({
+--   on_attach = function(_, bufnr)
+--     register_fmt_keymap("diagnosticls", bufnr)
+--     -- register_fmt_autosave("diagnosticls", bufnr)
+--   end,
+-- })
 
 local eslint = require 'diagnosticls-configs.linters.eslint'
---eslint = vim.tbl_extend('force', eslint, {
---  sourceName = 'eslint_extended',
---  command = './node_modules/.bin/eslint',
---  args = {
---    '--stdin',
---    '--stdin-filename',
---    '%filepath',
---    '--format',
---    'json'
---  },
---  requiredFiles = { '.eslintrc.js' },
---  rootPatterns = { '.git' },
---})
 
 local web_configs = {
-  linter = eslint,
-  formatter = require("diagnosticls-configs.formatters.prettier"),
+  --  linter = eslint,
+  --   formatter = require("diagnosticls-configs.formatters.prettier"),
 }
 
 
